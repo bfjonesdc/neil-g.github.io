@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fleek Street Tech Blog</title>
+    <description>Tech Stuff, kept Simple</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 14 Jul 2015 12:06:07 -0400</pubDate>
+    <lastBuildDate>Tue, 14 Jul 2015 12:06:07 -0400</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Triangle Numbers</title>
+        <description>&lt;p class=&quot;writing&quot;&gt; In this post, I&#39;ll talk about how I solved the &lt;a href=&quot;https://www.hackerrank.com/domains/&quot;&gt; HackerRank &lt;/a&gt; &lt;a href=&quot;https://www.hackerrank.com/challenges/triangle-numbers&quot;&gt; Triangle Numbers &lt;/a&gt; problem the long and why. In this problem, the triangle of numbers is created as follows: &lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt; 1 &lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt; 1 1 1 &lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt; 1 2 3 2 1 &lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt; 1 3 6 7 6 3 1 &lt;/p&gt;
+
+&lt;p&gt;Each number in any level is the sum of the number directly above it and its neighbors (not its own neighbors, the neighbors of the number directly above).  A non-existent neighbor is counted as a 0, i.e. the first two and last two numbers in any row will only be the sum of one or two numbers.  The problem asks you to give the position of the first even number a given level of the triangle.  No analytical idea popped at out at me immediately, so I decided with a brute force solution.  Maybe I would have some insight while breaking down the recursive formula for generating the levels&lt;/p&gt;
+
+&lt;h2 class=&quot;section-heading&quot;&gt;Next Level Function&lt;/h2&gt;
+&lt;p class=&quot;writing&quot;&gt; First I made a function that produced a new level from a given level called next_level.  I also imported the &lt;a href=&quot;http://pymotw.com/2/collections/deque.html&quot;&gt;deque&lt;/a&gt; object from the built-in &lt;a href=&quot;https://docs.python.org/3.4/library/collections.html&quot;&gt;collections module&lt;/a&gt;.  On a side note, I picked up deque from &lt;a href=&quot;http://www.amazon.com/Python-Cookbook-Third-David-Beazley/dp/1449340377/ref=sr_1_1?ie=UTF8&amp;amp;qid=1424669853&amp;amp;sr=8-1&amp;amp;keywords=python+cookbook&quot;&gt;Python Cookbook&lt;/a&gt;, which I highly recommend.  Among other things, you can set it to contain only a certain number of elelemnts, so that when you add an element to the end, it pops out the element at its head.  This is really convenient when you want to traverse some array but only look at some fixed length subarray.  Here I&#39;ll need to traverse the &quot;current level&quot; looking every subaray of 3 consequtive elements (to get the sums to calculate values for the level below).&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;
+&lt;div class=&quot;hlcode&quot;&gt;
+&lt;div class=&quot;syntax&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;next_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+
+
+&lt;p class=&quot;writing&quot;&gt;Each new level has a 1 on either end automatically.  The next numbers in are the sum of the first two and last two values of the current level respectively.  I refer to them as &quot;left end&quot; and &quot;right end.&quot;&lt;/p&gt;
+
+&lt;div class=&quot;hlcode&quot;&gt;
+&lt;div class=&quot;syntax&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;n&quot;&gt;l_end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;r_end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+   
+&lt;p class=&quot;writing&quot;&gt; That leaves a &quot;middle section&quot; with 2 elements shorter than the current level.  We&#39;ll make an empty middle section container to hold these values.  We&#39;ll also make a deque to traverse our current level.  The deque will have a max length of 3, and be initially populated by the first 3 elements of the current level.  This way we can calculate the deque sum to find the value the corresponding element for the middle, then append the next current level element to the deque, calculate the deque sum for the next middle element, etc. etc. until we have all of our values. The try/except here is so that I don&#39;t have to worry about indexing, which can be annoying.  I can let the deque keep going until there are no more middle elements left uncalculated without telling it explicitely where to stop.&lt;/p&gt; 
+
+&lt;div class=&quot;hlcode&quot;&gt;
+&lt;div class=&quot;syntax&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;n&quot;&gt;middle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxlen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;middle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;middle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt; Then finally putting the entire next level together, adding the 1&#39;s on either end, we get &lt;/p&gt; 
+
+&lt;div class=&quot;hlcode&quot;&gt;
+&lt;div class=&quot;syntax&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l_end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;middle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r_end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 class=&quot;section-heading&quot;&gt;Specific Level Function&lt;/h2&gt;
+&lt;p class=&quot;writing&quot;&gt;Next, I needed a function to find any specific level.  I could have modified my previous function to be recursive, but I chose a simpler method for me to implement, which was to create another function that called the next_level function. This function would be called produce_level and take an integer x representing the level of the triangle to produce. These two functions together would act like a single recursive function.  The produce_level function would start at level 2 which is [1,1,1] and keeping calling next_level on subsequent levels, keeping track of what level it was at, and stopping at the level asked for&lt;/p&gt;
+
+&lt;div class=&quot;hlcode&quot;&gt;
+&lt;div class=&quot;syntax&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;produce_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;level_number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;#39;&amp;#39;&amp;#39;produces the given level of the number triangle&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;current_level_number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;level_number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;current_level_number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 class=&quot;section-heading&quot;&gt;First Even Number Position Function&lt;/h2&gt;
+&lt;p class=&quot;writing&quot;&gt;Finally I would make a third function that would go through a given level and find the place of the first even number.  This could have easily been added to the previous function, but it was just simpler to think about all of these pieces modularly.  This function would basically go through the array starting at the beginning and find the first element n, where n/2 had a remainder of 0.  I would use the modulo function to do this (% in python; e.g. 17%3 = 2 since 17/3 = 5 remainder 2).  It would return the index+1 because in python the first element is element number 0, while in the problem, the first element is considered element number 1. 
+&lt;/p&gt;
+
+&lt;div class=&quot;hlcode&quot;&gt;
+&lt;div class=&quot;syntax&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;find_starting_even&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;level_number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;#39;&amp;#39;&amp;#39;finds the position of first even number in the given number triangle level&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;produce_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;level_number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;            
+
+&lt;h2 class=&quot;section-heading&quot;&gt;Test Running&lt;/h2&gt;
+&lt;p class=&quot;writing&quot;&gt;Now I wanted to test run my functions to see if they worked.  Plus maybe the output would reveal some kind of pattern.  By the way, I wan&#39;t worried about robustness of inputs, and I knew I would only be looking for levels above 2 and that Iw ould be the only one using these functions and for only a very short period of time.  Here was the output for levels 3 through 7&lt;/p&gt;
+
+&lt;div class=&quot;hlcode&quot;&gt;
+&lt;div class=&quot;syntax&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;  
+    &lt;span class=&quot;n&quot;&gt;produce_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;find_starting_even&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Produced&lt;/p&gt;
+
+&lt;div class=&quot;hlcode&quot;&gt;
+&lt;div class=&quot;syntax&quot;&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;51&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;126&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;141&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;126&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt; Everything checks out &lt;/p&gt;
+&lt;h2 class=&quot;section-heading&quot;&gt;Searching for a Pattern&lt;/h2&gt;
+&lt;p class=&quot;writing&quot;&gt;Everything is looking good, but I doubt HackerRank would let me solve this by brute force.  Their testing aapparatus tends to time out if you solve problems using brute force, and when I tried this, it did infact timeout.  So I had to find some sort of pattern.  Instead of printing out a bunch of outputs and sorting through it, I figured a pattern would be easiest to detect visually.  So I used a loop would generate a list of the first 50 values  output by the find_starting_even function (starting with level 3), make a list to hold the values, and then make a graph from that list.&lt;/p&gt;
+
+&lt;div class=&quot;hlcode&quot;&gt;
+
+&lt;div class=&quot;syntax&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;starting_even_position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;54&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;starting_even_position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find_starting_even&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;54&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;starting_even_position&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here is the resulting graph created:&lt;/p&gt;
+&lt;img src=&quot;/img/triangle_number_first_even.jpeg&quot; alt=&quot;first even number position of triangle numbers&quot; /&gt;
+
+&lt;h2 class=&quot;section-heading&quot;&gt;The Simplest Solution from the Longest Route&lt;/h2&gt;
+&lt;p class=&quot;writing&quot;&gt;The graph shows us that the first even number is generated by a nice clear and simple pattern: 2,3,4,3,2,3,4,3,2,3... Now all we need to know is if the traingle level we are looking for is divisible by 2 and 4 to instantly know the position of the first even number:
+&lt;/p&gt;
+
+&lt;div class=&quot;hlcode&quot;&gt;
+&lt;div class=&quot;syntax&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;first_even_position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;level_number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;level_number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;level_number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+This simple function passed with flying colors. 
+&lt;/p&gt;
+
+
+&lt;h2 class=&quot;section-heading&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p class=&quot;writing&quot;&gt; This was the long way to solve this problem for sure.  I made more functions than I needed to,  I used brute force as a starting point, I made graphs that revealed a pattern I probably could have picked up on through simple inspection, etc. but why?  Well in doing this problem I realized that I optimized for myself and I really didn&#39;t mind.  I had fun doing it this way, and I didn&#39;t go searching for some silver bullet algorithm I could apply, I didn&#39;t bother myself with being overly clever or performing intense mental gymnastics.  I just jumped in and kept everything simple at the expense of a little initial efficieny. This apporach isn&#39;t always appropriate, but I definitely don&#39;t mind when it is. &lt;/p&gt; 
+
+&lt;style type=&quot;text/css&quot;&gt;
+p.writing {
+    text-indent: 50px;
+}
+&lt;/style&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 20 Feb 2015 07:00:00 -0500</pubDate>
+        <link>/2015/02/20/triangle-numbers/</link>
+        <guid isPermaLink="true">/2015/02/20/triangle-numbers/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Max Contiguous Subarrays and Kadane&#39;s Algorithm</title>
+        <description>&lt;p class=&quot;writing&quot;&gt; Recently, I&#39;ve been going through problems on HackerRank and I came across an algorithm that I  couldn&#39;t quite nail down, and it bugged me.  The problem I am referring to is the &lt;a href=&quot;https://www.hackerrank.com/challenges/maxsubarray&quot;&gt; Maximum Subarray Problem&lt;/a&gt; and the algorithm used to solve it is &lt;a href=&quot;http://en.wikipedia.org/wiki/Maximum_subarray_problem&quot;&gt;Kadane&#39;s Algorithm&lt;/a&gt;. HackerRank provides a &lt;a href=&quot;#hackerrank-kadane-video&quot;&gt;video&lt;/a&gt; which lays out the algorithm nicely in Python, but after staring at it for a while, I still didn&#39;t &lt;i&gt;get&lt;/i&gt; get exactly how the algorithm was working. Maybe I needed another perspective or to see someone go through the iterations the algorithm to understand the logic more clearly.  So I decided to hit up YouTube. &lt;/p&gt;
+
+&lt;h2 class=&quot;section-heading&quot;&gt;YouTubing It&lt;/h2&gt;
+
+&lt;p class=&quot;writing&quot;&gt;Did I find videos on YouTube? Yes, many. Did they help? Not really, probably for multiple reasons.  It is hard to explain something complex as if you are a beginner. That is, I was sure that once I understood the algorithm, the videos would be crystal clear, but they weren&#39;t doing much to help me get over the divide between having a foggy understanding and a clear understanding.  But I also realized I would have to do more heavy lifting than just watching someone go through it, so I decided to bite the bullet and just revisit the original algorithm, meticulously stepping through it detail by detail.&lt;/p&gt;
+
+&lt;h2 class=&quot;section-heading&quot;&gt;Clarity, thy name is print&lt;/h2&gt;
+
+&lt;p class=&quot;writing&quot;&gt;A long time ago, I found it extremely helpful to program my own algorithms on my TI to use for math exams. Programming the algorithms actually made using the TI redundant (well, not exactly redundant, they were still really convenient), because in breaking down an algorithm enough to program it, I had to learn it pretty well.  Computers are &quot;dumb,&quot; so you have to be explicit in your instructions and therefore clear in your understanding.  But I already had the algorithm I needed in front of me and did not want to reinvent the wheel. I was also reluctant to dryly trek through the steps by hand. So I decided to build a &quot;mouth-piece&quot; for my algorithm so it could tell me what it was doing and why.  Enter the print() statement. &lt;/p&gt;
+
+&lt;h2 class=&quot;section-heading&quot;&gt;print(&quot;what and why&quot;)&lt;/h2&gt;
+
+&lt;p class=&quot;writing&quot;&gt;Through strategic print statements, I turned my (well, not mine) algorithm into the most efficient instructor.  It would spit out what it was doing and why in a nice human-friendly format as it did it&#39;s work.  Again, the process of updating the algorithm was really illuminating, but once the print statements were polished and in place, the algorithm became really clear, and I could also watch it work on many different arrays.&lt;/p&gt;
+&lt;p class=&quot;writing&quot;&gt;&lt;a href=&quot;https://github.com/Neil-G/Algorithms-and-Problems/blob/master/HackerRank/max_subarray.py&quot;&gt;Here is a link to my script that explains Kadane&#39;s Algorithm step by step&lt;/a&gt; for you to try it yourself.  You can run it in your IDE of choice by just pressing play, or you can download it and run it from the command line, and follow the printed output.&lt;/p&gt;
+
+&lt;h2 class=&quot;section-heading&quot;&gt;To the future&lt;/h2&gt;
+
+&lt;p class=&quot;writing&quot;&gt;I may not see or need to use Kadane&#39;s algorithm for a while after this and because of this, I will eventually forget it.  And if I ever need it, I would have to relearn probably almost from scratch.  But now I can tuck my new algorithmic teacher algorithm in a repository somewhere and bust it out for an almost instant understanding of Kadane&#39;s Algorithm should I ever want or need it.  Also, I hope that anyone else wanting to understand the algorithm quickly and easily could use this algorithm teacher algorithm.  Actually this worked so well for me I think I&#39;m going to make a little library of these, so hit me up if you have any requests. &lt;/p&gt;
+
+&lt;h2 class=&quot;section-heading&quot;&gt;Commandline Example&lt;/h2&gt;
+&lt;pre&gt;
+neil@neil-H61MLC:~$ python3 max_subarray.py
+Let&#39;s find the subarray of [-6, 7, -2, 2, 4, -4, -13, 14, 8, -15] with the maximum sum using Kadane&#39;s Algorithm
+Note that the first array value is at the zeroth index, not the first index
+We&#39;ll think of our starting subarray as empty with sum 0
+----------------
+
+--&amp;gt; checking array at index 0: -6
+step 1. Calculate (new value) = (current sum: 0) + (array[0]: -6) = -6
+step 2. Check if (new value) &amp;gt; 0:
+  it isn&#39;t, so we set current sum to 0 and move onto the next array value
+result: our subarray so far is [] with sum 0:
+----------------
+
+--&amp;gt; checking array at index 1: 7
+step 1. Calculate (new value) = (current sum: 0) + (array[1]: 7) = 7
+step 2. Check if (new value) &amp;gt; 0:
+  it is, so check if (current sum) = 0:
+    it is, so set subarray starting index to current index 1
+  since (new value: 7) &amp;gt; 0, (current sum: 0) is set to (new value)
+step 3. Check if (current sum) &amp;gt; (best sum)
+  (current sum: 7) &amp;gt; (best sum: 0), so best sum becomes: 7, best start index: 1, and best end index: 1
+result: our subarray so far is [7] with sum 7:
+----------------
+
+--&amp;gt; checking array at index 2: -2
+step 1. Calculate (new value) = (current sum: 7) + (array[2]: -2) = 5
+step 2. Check if (new value) &amp;gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn&#39;t, so don&#39;t change the starting index
+  since (new value: 5) &amp;gt; 0, (current sum: 7) is set to (new value)
+step 3. Check if (current sum) &amp;gt; (best sum)
+  (current sum: 5) =&amp;lt; (best sum: 7), so we move on to the next array value
+result: our subarray so far is [7] with sum 7:
+----------------
+
+--&amp;gt; checking array at index 3: 2
+step 1. Calculate (new value) = (current sum: 5) + (array[3]: 2) = 7
+step 2. Check if (new value) &amp;gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn&#39;t, so don&#39;t change the starting index
+  since (new value: 7) &amp;gt; 0, (current sum: 5) is set to (new value)
+step 3. Check if (current sum) &amp;gt; (best sum)
+  (current sum: 7) =&amp;lt; (best sum: 7), so we move on to the next array value
+result: our subarray so far is [7] with sum 7:
+----------------
+
+--&amp;gt; checking array at index 4: 4
+step 1. Calculate (new value) = (current sum: 7) + (array[4]: 4) = 11
+step 2. Check if (new value) &amp;gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn&#39;t, so don&#39;t change the starting index
+  since (new value: 11) &amp;gt; 0, (current sum: 7) is set to (new value)
+step 3. Check if (current sum) &amp;gt; (best sum)
+  (current sum: 11) &amp;gt; (best sum: 7), so best sum becomes: 11, best start index: 1, and best end index: 4
+result: our subarray so far is [7, -2, 2, 4] with sum 11:
+----------------
+
+--&amp;gt; checking array at index 5: -4
+step 1. Calculate (new value) = (current sum: 11) + (array[5]: -4) = 7
+step 2. Check if (new value) &amp;gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn&#39;t, so don&#39;t change the starting index
+  since (new value: 7) &amp;gt; 0, (current sum: 11) is set to (new value)
+step 3. Check if (current sum) &amp;gt; (best sum)
+  (current sum: 7) =&amp;lt; (best sum: 11), so we move on to the next array value
+result: our subarray so far is [7, -2, 2, 4] with sum 11:
+----------------
+
+--&amp;gt; checking array at index 6: -13
+step 1. Calculate (new value) = (current sum: 7) + (array[6]: -13) = -6
+step 2. Check if (new value) &amp;gt; 0:
+  it isn&#39;t, so we set current sum to 0 and move onto the next array value
+result: our subarray so far is [7, -2, 2, 4] with sum 11:
+----------------
+
+--&amp;gt; checking array at index 7: 14
+step 1. Calculate (new value) = (current sum: 0) + (array[7]: 14) = 14
+step 2. Check if (new value) &amp;gt; 0:
+  it is, so check if (current sum) = 0:
+    it is, so set subarray starting index to current index 7
+  since (new value: 14) &amp;gt; 0, (current sum: 0) is set to (new value)
+step 3. Check if (current sum) &amp;gt; (best sum)
+  (current sum: 14) &amp;gt; (best sum: 11), so best sum becomes: 14, best start index: 7, and best end index: 7
+result: our subarray so far is [14] with sum 14:
+----------------
+
+--&amp;gt; checking array at index 8: 8
+step 1. Calculate (new value) = (current sum: 14) + (array[8]: 8) = 22
+step 2. Check if (new value) &amp;gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn&#39;t, so don&#39;t change the starting index
+  since (new value: 22) &amp;gt; 0, (current sum: 14) is set to (new value)
+step 3. Check if (current sum) &amp;gt; (best sum)
+  (current sum: 22) &amp;gt; (best sum: 14), so best sum becomes: 22, best start index: 7, and best end index: 8
+result: our subarray so far is [14, 8] with sum 22:
+----------------
+
+--&amp;gt; checking array at index 9: -15
+step 1. Calculate (new value) = (current sum: 22) + (array[9]: -15) = 7
+step 2. Check if (new value) &amp;gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn&#39;t, so don&#39;t change the starting index
+  since (new value: 7) &amp;gt; 0, (current sum: 22) is set to (new value)
+step 3. Check if (current sum) &amp;gt; (best sum)
+  (current sum: 7) =&amp;lt; (best sum: 22), so we move on to the next array value
+result: our subarray so far is [14, 8] with sum 22:
+----------------
+
+Finally, our max sum contiguous subarray from array [-6, 7, -2, 2, 4, -4, -13, 14, 8, -15] is [14, 8] with sum 22
+&#39;All done&#39;
+&lt;/pre&gt;
+
+&lt;h3 class=&quot;section-heading&quot; id=&quot;hackerrank-kadane-video&quot;&gt;Maximum Contiguous Subarray Problem O(n) (Python)&lt;/h3&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/EK71U-vTOt4&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+a {text-decoration: underline;}
+p {
+  margin: 0em;
+}
+p.writing {
+  text-indent: 40px;
+  margin: 1em;
+}
+&lt;/style&gt;
+
+</description>
+        <pubDate>Sat, 14 Feb 2015 07:00:00 -0500</pubDate>
+        <link>/2015/02/14/max-subarray-kadane/</link>
+        <guid isPermaLink="true">/2015/02/14/max-subarray-kadane/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

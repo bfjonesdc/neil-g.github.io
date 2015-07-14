@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Tech Stuff, kept Simple">
+
+    <title>Max Contiguous Subarrays and Kadane's Algorithm - Fleek Street Tech Blog</title>
+
+    <link rel="canonical" href="/2015/02/14/max-subarray-kadane/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Fleek Street Tech Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/about/">About</a>
+                </li>
+                
+                <li>
+                    <a href="/archives/">Archives</a>
+                </li>
+                
+                <li>
+                    <a href="/contact/">Contact</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-01.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Max Contiguous Subarrays and Kadane's Algorithm</h1>
+                    
+                    <h2 class="subheading">And Illuminating Algorithms with print()</h2>
+                    
+                    <span class="meta">Posted by   on February 14, 2015</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p class="writing"> Recently, I've been going through problems on HackerRank and I came across an algorithm that I  couldn't quite nail down, and it bugged me.  The problem I am referring to is the <a href="https://www.hackerrank.com/challenges/maxsubarray"> Maximum Subarray Problem</a> and the algorithm used to solve it is <a href="http://en.wikipedia.org/wiki/Maximum_subarray_problem">Kadane's Algorithm</a>. HackerRank provides a <a href="#hackerrank-kadane-video">video</a> which lays out the algorithm nicely in Python, but after staring at it for a while, I still didn't <i>get</i> get exactly how the algorithm was working. Maybe I needed another perspective or to see someone go through the iterations the algorithm to understand the logic more clearly.  So I decided to hit up YouTube. </p>
+
+<h2 class="section-heading">YouTubing It</h2>
+
+<p class="writing">Did I find videos on YouTube? Yes, many. Did they help? Not really, probably for multiple reasons.  It is hard to explain something complex as if you are a beginner. That is, I was sure that once I understood the algorithm, the videos would be crystal clear, but they weren't doing much to help me get over the divide between having a foggy understanding and a clear understanding.  But I also realized I would have to do more heavy lifting than just watching someone go through it, so I decided to bite the bullet and just revisit the original algorithm, meticulously stepping through it detail by detail.</p>
+
+<h2 class="section-heading">Clarity, thy name is print</h2>
+
+<p class="writing">A long time ago, I found it extremely helpful to program my own algorithms on my TI to use for math exams. Programming the algorithms actually made using the TI redundant (well, not exactly redundant, they were still really convenient), because in breaking down an algorithm enough to program it, I had to learn it pretty well.  Computers are "dumb," so you have to be explicit in your instructions and therefore clear in your understanding.  But I already had the algorithm I needed in front of me and did not want to reinvent the wheel. I was also reluctant to dryly trek through the steps by hand. So I decided to build a "mouth-piece" for my algorithm so it could tell me what it was doing and why.  Enter the print() statement. </p>
+
+<h2 class="section-heading">print("what and why")</h2>
+
+<p class="writing">Through strategic print statements, I turned my (well, not mine) algorithm into the most efficient instructor.  It would spit out what it was doing and why in a nice human-friendly format as it did it's work.  Again, the process of updating the algorithm was really illuminating, but once the print statements were polished and in place, the algorithm became really clear, and I could also watch it work on many different arrays.</p>
+<p class="writing"><a href="https://github.com/Neil-G/Algorithms-and-Problems/blob/master/HackerRank/max_subarray.py">Here is a link to my script that explains Kadane's Algorithm step by step</a> for you to try it yourself.  You can run it in your IDE of choice by just pressing play, or you can download it and run it from the command line, and follow the printed output.</p>
+
+<h2 class="section-heading">To the future</h2>
+
+<p class="writing">I may not see or need to use Kadane's algorithm for a while after this and because of this, I will eventually forget it.  And if I ever need it, I would have to relearn probably almost from scratch.  But now I can tuck my new algorithmic teacher algorithm in a repository somewhere and bust it out for an almost instant understanding of Kadane's Algorithm should I ever want or need it.  Also, I hope that anyone else wanting to understand the algorithm quickly and easily could use this algorithm teacher algorithm.  Actually this worked so well for me I think I'm going to make a little library of these, so hit me up if you have any requests. </p>
+
+<h2 class="section-heading">Commandline Example</h2>
+<pre>
+neil@neil-H61MLC:~$ python3 max_subarray.py
+Let's find the subarray of [-6, 7, -2, 2, 4, -4, -13, 14, 8, -15] with the maximum sum using Kadane's Algorithm
+Note that the first array value is at the zeroth index, not the first index
+We'll think of our starting subarray as empty with sum 0
+----------------
+
+--&gt; checking array at index 0: -6
+step 1. Calculate (new value) = (current sum: 0) + (array[0]: -6) = -6
+step 2. Check if (new value) &gt; 0:
+  it isn't, so we set current sum to 0 and move onto the next array value
+result: our subarray so far is [] with sum 0:
+----------------
+
+--&gt; checking array at index 1: 7
+step 1. Calculate (new value) = (current sum: 0) + (array[1]: 7) = 7
+step 2. Check if (new value) &gt; 0:
+  it is, so check if (current sum) = 0:
+    it is, so set subarray starting index to current index 1
+  since (new value: 7) &gt; 0, (current sum: 0) is set to (new value)
+step 3. Check if (current sum) &gt; (best sum)
+  (current sum: 7) &gt; (best sum: 0), so best sum becomes: 7, best start index: 1, and best end index: 1
+result: our subarray so far is [7] with sum 7:
+----------------
+
+--&gt; checking array at index 2: -2
+step 1. Calculate (new value) = (current sum: 7) + (array[2]: -2) = 5
+step 2. Check if (new value) &gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn't, so don't change the starting index
+  since (new value: 5) &gt; 0, (current sum: 7) is set to (new value)
+step 3. Check if (current sum) &gt; (best sum)
+  (current sum: 5) =&lt; (best sum: 7), so we move on to the next array value
+result: our subarray so far is [7] with sum 7:
+----------------
+
+--&gt; checking array at index 3: 2
+step 1. Calculate (new value) = (current sum: 5) + (array[3]: 2) = 7
+step 2. Check if (new value) &gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn't, so don't change the starting index
+  since (new value: 7) &gt; 0, (current sum: 5) is set to (new value)
+step 3. Check if (current sum) &gt; (best sum)
+  (current sum: 7) =&lt; (best sum: 7), so we move on to the next array value
+result: our subarray so far is [7] with sum 7:
+----------------
+
+--&gt; checking array at index 4: 4
+step 1. Calculate (new value) = (current sum: 7) + (array[4]: 4) = 11
+step 2. Check if (new value) &gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn't, so don't change the starting index
+  since (new value: 11) &gt; 0, (current sum: 7) is set to (new value)
+step 3. Check if (current sum) &gt; (best sum)
+  (current sum: 11) &gt; (best sum: 7), so best sum becomes: 11, best start index: 1, and best end index: 4
+result: our subarray so far is [7, -2, 2, 4] with sum 11:
+----------------
+
+--&gt; checking array at index 5: -4
+step 1. Calculate (new value) = (current sum: 11) + (array[5]: -4) = 7
+step 2. Check if (new value) &gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn't, so don't change the starting index
+  since (new value: 7) &gt; 0, (current sum: 11) is set to (new value)
+step 3. Check if (current sum) &gt; (best sum)
+  (current sum: 7) =&lt; (best sum: 11), so we move on to the next array value
+result: our subarray so far is [7, -2, 2, 4] with sum 11:
+----------------
+
+--&gt; checking array at index 6: -13
+step 1. Calculate (new value) = (current sum: 7) + (array[6]: -13) = -6
+step 2. Check if (new value) &gt; 0:
+  it isn't, so we set current sum to 0 and move onto the next array value
+result: our subarray so far is [7, -2, 2, 4] with sum 11:
+----------------
+
+--&gt; checking array at index 7: 14
+step 1. Calculate (new value) = (current sum: 0) + (array[7]: 14) = 14
+step 2. Check if (new value) &gt; 0:
+  it is, so check if (current sum) = 0:
+    it is, so set subarray starting index to current index 7
+  since (new value: 14) &gt; 0, (current sum: 0) is set to (new value)
+step 3. Check if (current sum) &gt; (best sum)
+  (current sum: 14) &gt; (best sum: 11), so best sum becomes: 14, best start index: 7, and best end index: 7
+result: our subarray so far is [14] with sum 14:
+----------------
+
+--&gt; checking array at index 8: 8
+step 1. Calculate (new value) = (current sum: 14) + (array[8]: 8) = 22
+step 2. Check if (new value) &gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn't, so don't change the starting index
+  since (new value: 22) &gt; 0, (current sum: 14) is set to (new value)
+step 3. Check if (current sum) &gt; (best sum)
+  (current sum: 22) &gt; (best sum: 14), so best sum becomes: 22, best start index: 7, and best end index: 8
+result: our subarray so far is [14, 8] with sum 22:
+----------------
+
+--&gt; checking array at index 9: -15
+step 1. Calculate (new value) = (current sum: 22) + (array[9]: -15) = 7
+step 2. Check if (new value) &gt; 0:
+  it is, so check if (current sum) = 0:
+    it isn't, so don't change the starting index
+  since (new value: 7) &gt; 0, (current sum: 22) is set to (new value)
+step 3. Check if (current sum) &gt; (best sum)
+  (current sum: 7) =&lt; (best sum: 22), so we move on to the next array value
+result: our subarray so far is [14, 8] with sum 22:
+----------------
+
+Finally, our max sum contiguous subarray from array [-6, 7, -2, 2, 4, -4, -13, 14, 8, -15] is [14, 8] with sum 22
+'All done'
+</pre>
+
+<h3 class="section-heading" id="hackerrank-kadane-video">Maximum Contiguous Subarray Problem O(n) (Python)</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EK71U-vTOt4" frameborder="0" allowfullscreen=""></iframe>
+<p><br />
+<br />
+<br /></p>
+<style type="text/css">
+a {text-decoration: underline;}
+p {
+  margin: 0em;
+}
+p.writing {
+  text-indent: 40px;
+  margin: 1em;
+}
+</style>
+
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/02/20/triangle-numbers/" data-toggle="tooltip" data-placement="top" title="Triangle Numbers">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+    
+    
+<div class="container">
+    <div class="row">
+        <div class='col-md-2'></div>
+<div class='col-md-8'>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'fleekstreet'; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+        <div class='col-md-2'></div>
+    </div>
+</div>
+
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60032181-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Fleek Street Tech Blog 2015</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+    
+    
+
+</body>
+
+</html>
