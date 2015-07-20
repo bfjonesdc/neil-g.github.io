@@ -11,7 +11,9 @@ html {
       -ms-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
+ margin: 15px;
+border: 30px solid #000000;
+padding: 15;
 }
 article,
 aside,
