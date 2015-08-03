@@ -8,6 +8,9 @@ comments:   true
 header-img: "img/post-bg-01.jpg"
 ---
 
+<div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <p class="writing"> Recently, I've been going through problems on HackerRank and I came across an algorithm that I  couldn't quite nail down, and it bugged me.  The problem I am referring to is the <a href='https://www.hackerrank.com/challenges/maxsubarray'> Maximum Subarray Problem</a> and the algorithm used to solve it is <a href='http://en.wikipedia.org/wiki/Maximum_subarray_problem'>Kadane's Algorithm</a>. HackerRank provides a <a href="#hackerrank-kadane-video">video</a> which lays out the algorithm nicely in Python, but after staring at it for a while, I still didn't <i>get</i> get exactly how the algorithm was working. Maybe I needed another perspective or to see someone go through the iterations the algorithm to understand the logic more clearly.  So I decided to hit up YouTube. </p>
 
 <h2 class="section-heading">YouTubing It</h2>
@@ -151,6 +154,10 @@ Finally, our max sum contiguous subarray from array [-6, 7, -2, 2, 4, -4, -13, 1
 <br/>
 <br/>
 <br/>
+
+</div>
+</div>
+</div>
 <style type="text/css">
 a {text-decoration: underline;}
 p {

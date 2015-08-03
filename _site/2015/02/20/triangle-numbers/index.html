@@ -12,19 +12,21 @@
 
     <link rel="canonical" href="/2015/02/20/triangle-numbers/">
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!-- Skeleton CSS -->
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/normalize.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/custom.css">
     <link rel="stylesheet" href="/css/clean-blog.css">
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="/css/syntax.css">
 
     <!-- Custom Fonts -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!--link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"-->
+    <!--link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'-->
+    <!--link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'-->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,49 +35,54 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!--link rel="stylesheet" href="/css/skeleton.css"-->
+    <!--link rel="stylesheet" href="/css/normalize.css"-->
+    <!--link rel="stylesheet" href="/css/bootstrap.min.css"-->
+
+    <!-- Scripts -->
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
 </head>
 
 
 <body>
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Keyboard Warriors</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                
-                <li>
-                    <a href="/about/">About</a>
-                </li>
-                
-                <li>
-                    <a href="/archives/">Archives</a>
-                </li>
-                
-                <li>
-                    <a href="/contact/">Contact</a>
-                </li>
-                
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
+<div class="navbar-spacer"></div>
+<nav class="navbar">
+  <div class="container">
+    <ul class="navbar-list">
+      <li class="navbar-item">
+        <a class="navbar-link" href="/">Keyboard Warriors</a>
+      </li>
+      <li class="navbar-item">
+        <a class="navbar-link" href="/">Home</a>
+      </li>
+      
+        
+          <li class="navbar-item">
+            <a class="navbar-link" href="/about/">About</a>
+          </li>
+        
+      
+        
+          <li class="navbar-item">
+            <a class="navbar-link" href="/archives/">Archives</a>
+          </li>
+        
+      
+        
+          <li class="navbar-item">
+            <a class="navbar-link" href="/contact/">Contact</a>
+          </li>
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
 </nav>
 
 
@@ -83,7 +90,7 @@
 <header class="intro-header" style="background-image: url('/img/post-bg-04.jpg')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="columns twelve">
                 <div class="post-heading">
                     <h1>Triangle Numbers</h1>
                     
@@ -98,16 +105,18 @@
 
 <!-- Post Content -->
 <article>
-    <div class="container">
+    
+
+				<div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
-				<p class="writing"> In this post, I'll talk about how I solved the <a href="https://www.hackerrank.com/domains/"> HackerRank </a> <a href="https://www.hackerrank.com/challenges/triangle-numbers"> Triangle Numbers </a> problem the long and why. In this problem, the triangle of numbers is created as follows: </p>
+<p class="writing"> In this post, I'll talk about how I solved the <a href="https://www.hackerrank.com/domains/"> HackerRank </a> <a href="https://www.hackerrank.com/challenges/triangle-numbers"> Triangle Numbers </a> problem the long and why. In this problem, the triangle of numbers is created as follows: </p> 
 
 <p align="center"> 1 </p>
 <p align="center"> 1 1 1 </p>
 <p align="center"> 1 2 3 2 1 </p>
 <p align="center"> 1 3 6 7 6 3 1 </p>
+
 
 <p>Each number in any level is the sum of the number directly above it and its neighbors (not its own neighbors, the neighbors of the number directly above).  A non-existent neighbor is counted as a 0, i.e. the first two and last two numbers in any row will only be the sum of one or two numbers.  The problem asks you to give the position of the first even number a given level of the triangle.  No analytical idea popped at out at me immediately, so I decided with a brute force solution.  Maybe I would have some insight while breaking down the recursive formula for generating the levels</p>
 
@@ -258,6 +267,10 @@ This simple function passed with flying colors.
 <h2 class="section-heading">Conclusion</h2>
 <p class="writing"> This was the long way to solve this problem for sure.  I made more functions than I needed to,  I used brute force as a starting point, I made graphs that revealed a pattern I probably could have picked up on through simple inspection, etc. but why?  Well in doing this problem I realized that I optimized for myself and I really didn't mind.  I had fun doing it this way, and I didn't go searching for some silver bullet algorithm I could apply, I didn't bother myself with being overly clever or performing intense mental gymnastics.  I just jumped in and kept everything simple at the expense of a little initial efficieny. This apporach isn't always appropriate, but I definitely don't mind when it is. </p> 
 
+
+</div>
+</div>
+</div>
 <style type="text/css">
 p.writing {
     text-indent: 50px;
@@ -275,11 +288,13 @@ p.writing {
                     </li>
                     
                     
+                    <li class="next">
+                        <a href="/2015/07/21/basic-svg-shapes/" data-toggle="tooltip" data-placement="top" title="Basic SVG Shapes">Next Post &rarr;</a>
+                    </li>
+                    
                 </ul>
 
-            </div>
-        </div>
-    </div>
+    
 </article>
 
 <hr>
@@ -349,7 +364,7 @@ p.writing {
 <script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js "></script>
+<script src="/js/site.js "></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/js/clean-blog.min.js "></script>

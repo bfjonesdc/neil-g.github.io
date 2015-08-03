@@ -12,19 +12,21 @@
 
     <link rel="canonical" href="/2015/02/14/max-subarray-kadane/">
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!-- Skeleton CSS -->
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/normalize.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/custom.css">
     <link rel="stylesheet" href="/css/clean-blog.css">
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="/css/syntax.css">
 
     <!-- Custom Fonts -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!--link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"-->
+    <!--link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'-->
+    <!--link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'-->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,49 +35,54 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!--link rel="stylesheet" href="/css/skeleton.css"-->
+    <!--link rel="stylesheet" href="/css/normalize.css"-->
+    <!--link rel="stylesheet" href="/css/bootstrap.min.css"-->
+
+    <!-- Scripts -->
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
 </head>
 
 
 <body>
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Keyboard Warriors</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                
-                <li>
-                    <a href="/about/">About</a>
-                </li>
-                
-                <li>
-                    <a href="/archives/">Archives</a>
-                </li>
-                
-                <li>
-                    <a href="/contact/">Contact</a>
-                </li>
-                
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
+<div class="navbar-spacer"></div>
+<nav class="navbar">
+  <div class="container">
+    <ul class="navbar-list">
+      <li class="navbar-item">
+        <a class="navbar-link" href="/">Keyboard Warriors</a>
+      </li>
+      <li class="navbar-item">
+        <a class="navbar-link" href="/">Home</a>
+      </li>
+      
+        
+          <li class="navbar-item">
+            <a class="navbar-link" href="/about/">About</a>
+          </li>
+        
+      
+        
+          <li class="navbar-item">
+            <a class="navbar-link" href="/archives/">Archives</a>
+          </li>
+        
+      
+        
+          <li class="navbar-item">
+            <a class="navbar-link" href="/contact/">Contact</a>
+          </li>
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
 </nav>
 
 
@@ -83,7 +90,7 @@
 <header class="intro-header" style="background-image: url('/img/post-bg-01.jpg')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="columns twelve">
                 <div class="post-heading">
                     <h1>Max Contiguous Subarrays and Kadane's Algorithm</h1>
                     
@@ -98,11 +105,12 @@
 
 <!-- Post Content -->
 <article>
-    <div class="container">
+    
+
+				<div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
-				<p class="writing"> Recently, I've been going through problems on HackerRank and I came across an algorithm that I  couldn't quite nail down, and it bugged me.  The problem I am referring to is the <a href="https://www.hackerrank.com/challenges/maxsubarray"> Maximum Subarray Problem</a> and the algorithm used to solve it is <a href="http://en.wikipedia.org/wiki/Maximum_subarray_problem">Kadane's Algorithm</a>. HackerRank provides a <a href="#hackerrank-kadane-video">video</a> which lays out the algorithm nicely in Python, but after staring at it for a while, I still didn't <i>get</i> get exactly how the algorithm was working. Maybe I needed another perspective or to see someone go through the iterations the algorithm to understand the logic more clearly.  So I decided to hit up YouTube. </p>
+<p class="writing"> Recently, I've been going through problems on HackerRank and I came across an algorithm that I  couldn't quite nail down, and it bugged me.  The problem I am referring to is the <a href="https://www.hackerrank.com/challenges/maxsubarray"> Maximum Subarray Problem</a> and the algorithm used to solve it is <a href="http://en.wikipedia.org/wiki/Maximum_subarray_problem">Kadane's Algorithm</a>. HackerRank provides a <a href="#hackerrank-kadane-video">video</a> which lays out the algorithm nicely in Python, but after staring at it for a while, I still didn't <i>get</i> get exactly how the algorithm was working. Maybe I needed another perspective or to see someone go through the iterations the algorithm to understand the logic more clearly.  So I decided to hit up YouTube. </p>
 
 <h2 class="section-heading">YouTubing It</h2>
 
@@ -120,6 +128,7 @@
 <h2 class="section-heading">To the future</h2>
 
 <p class="writing">I may not see or need to use Kadane's algorithm for a while after this and because of this, I will eventually forget it.  And if I ever need it, I would have to relearn probably almost from scratch.  But now I can tuck my new algorithmic teacher algorithm in a repository somewhere and bust it out for an almost instant understanding of Kadane's Algorithm should I ever want or need it.  Also, I hope that anyone else wanting to understand the algorithm quickly and easily could use this algorithm teacher algorithm.  Actually this worked so well for me I think I'm going to make a little library of these, so hit me up if you have any requests. </p>
+
 
 <h2 class="section-heading">Commandline Example</h2>
 <pre>
@@ -235,11 +244,19 @@ Finally, our max sum contiguous subarray from array [-6, 7, -2, 2, 4, -4, -13, 1
 'All done'
 </pre>
 
+
+
+
+
 <h3 class="section-heading" id="hackerrank-kadane-video">Maximum Contiguous Subarray Problem O(n) (Python)</h3>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EK71U-vTOt4" frameborder="0" allowfullscreen=""></iframe>
-<p><br />
 <br />
-<br /></p>
+<br />
+<br />
+
+</div>
+</div>
+</div>
 <style type="text/css">
 a {text-decoration: underline;}
 p {
@@ -264,9 +281,7 @@ p.writing {
                     
                 </ul>
 
-            </div>
-        </div>
-    </div>
+    
 </article>
 
 <hr>
@@ -336,7 +351,7 @@ p.writing {
 <script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js "></script>
+<script src="/js/site.js "></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/js/clean-blog.min.js "></script>

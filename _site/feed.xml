@@ -5,18 +5,746 @@
     <description>You can&#39;t miss it</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 20 Jul 2015 16:06:41 -0400</pubDate>
-    <lastBuildDate>Mon, 20 Jul 2015 16:06:41 -0400</lastBuildDate>
+    <pubDate>Mon, 03 Aug 2015 01:45:14 -0400</pubDate>
+    <lastBuildDate>Mon, 03 Aug 2015 01:45:14 -0400</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
+        <title>React Diagrams</title>
+        <description>&lt;h1 id=&quot;prereqs&quot;&gt;PreReqs&lt;/h1&gt;
+
+&lt;p&gt;I’ll assume you already know a little about React,
+but if you don’t you can head over to their website 
+&lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;React Home Page&lt;/a&gt;,
+and refer to the diagrams in this article as you go through the examples.&lt;/p&gt;
+
+&lt;h1 id=&quot;conventions&quot;&gt;Conventions&lt;/h1&gt;
+&lt;p&gt;I mainly use two diagrams schemes I use to think about React component architecture.&lt;/p&gt;
+
+&lt;h2 id=&quot;nested-boxes-diagram&quot;&gt;Nested boxes diagram&lt;/h2&gt;
+&lt;p&gt;In the first scheme, componenets are represented by boxes, 
+and are nested within eachother in roughly how they will appear on the screen.
+Image and explanation of nested boxes diagram, verbose and not verbose&lt;/p&gt;
+
+&lt;h2 id=&quot;component-tree-diagram&quot;&gt;Component tree diagram&lt;/h2&gt;
+&lt;p&gt;The second scheme shows the component architecture as a tree.&lt;/p&gt;
+
+&lt;p&gt;Image and explanation of component tree diagram, verbose and not verbose&lt;/p&gt;
+
+&lt;h1 id=&quot;front-page-examples&quot;&gt;Front Page Examples&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;Find the examples in this section here&lt;/a&gt;,&lt;/p&gt;
+
+&lt;h2 id=&quot;a-simple-component&quot;&gt;A simple component&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/a_simple_component_verbose.png&quot; alt=&quot;&quot; /&gt;
+* Example Code
+* Example 
+* Nested boxes diagrams
+* Component tree diagrams
+* Summary
+* Strategy Details&lt;/p&gt;
+
+&lt;h2 id=&quot;a-stateful-component-elapsed-time-counter&quot;&gt;A Stateful Component (Elapsed Time Counter)&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/a_stateful_component.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;an-application&quot;&gt;An Application&lt;/h2&gt;
+
+&lt;h2 id=&quot;a-component-using-external-pluggins-markdown-converter&quot;&gt;A component Using External Pluggins (MarkDown Converter)&lt;/h2&gt;
+
+&lt;h1 id=&quot;comment-box-example&quot;&gt;Comment Box Example&lt;/h1&gt;
+
+&lt;h1 id=&quot;some-thoughts&quot;&gt;Some Thoughts&lt;/h1&gt;
+
+&lt;p&gt;My next case study will be about the Filterable Table Example,
+and combining some the examples so far to make something new.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 21 Jul 2015 08:00:00 -0400</pubDate>
+        <link>/2015/07/21/react-case-study-hiding-and-showing/</link>
+        <guid isPermaLink="true">/2015/07/21/react-case-study-hiding-and-showing/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Introduction to SVG</title>
+        <description>&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+   		
+	   	&lt;!-- Name of Shape --&gt;
+	  	&lt;h1&gt; What is SVG &lt;/h1&gt;
+		
+
+
+			&lt;p&gt; SVG stands for Scalable Vector Graphics.  It is used to define vector-based graphics for the web using XML format.  Some advantages of using svg is that  the quality of SVG graphics do not deteriorate as images are scaled up and down, and images can be transformed and animated. These graphics can be created and manipulated using any text editor, although there are many programs out there such as Inkscape and Adobe Illustrator that allow you to work with svg outside of text format. There are more robust introductions to svg there that I&#39;ll link to below, but for the purposes of this discussion, we&#39;ll be looking at simple svg shapes implanted directly onto the webpage as xml between svg tags. For understanding the elementary svg shapes this should be enough to get started.&lt;/p&gt;
+
+			&lt;h1&gt; The SVG Line &lt;/h1&gt;
+			&lt;p&gt; Our first shape is the line. Although lines are simple, and kind of boring, they serve as an important building block for almost every other shape. Below is an interactive drawing of a line.  On the right is the svg code, and on the left is the svg drawing that the code generates.  The things to pay attention to here are the parameters for the line.  The parameters can be thought of in two distinct parts: parameters that determine the spatial characteristics of the line, and parameters that determine the style of the line (its stroke).  Spatial is kind of like the where, and stroke is kind of like the how.&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;columns six&quot;&gt;
+			&lt;table&gt;
+	      &lt;thead&gt;
+	         &lt;tr&gt;
+	            &lt;th&gt;Spatial Parameter&lt;/th&gt;
+	            &lt;th&gt;description&lt;/th&gt;
+	         &lt;/tr&gt;
+	      &lt;/thead&gt;
+	      &lt;tbody&gt;
+	         &lt;tr&gt;
+	            &lt;td&gt;x1&lt;/td&gt;
+	            &lt;td&gt;x-coordinate of the beginning of the line&lt;/td&gt;
+	         &lt;/tr&gt;
+	         &lt;tr&gt;
+	            &lt;td&gt;y1&lt;/td&gt;
+	            &lt;td&gt;y-coordinate of the beginning of the line&lt;/td&gt;
+	         &lt;/tr&gt;
+	         &lt;tr&gt;
+	            &lt;td&gt;x2&lt;/td&gt;
+	            &lt;td&gt;x-coordinate of the end of the line&lt;/td&gt;
+	         &lt;/tr&gt;
+	         &lt;tr&gt;
+	            &lt;td&gt;y2&lt;/td&gt;
+	            &lt;td&gt;y-coordinate of the end of the line&lt;/td&gt;
+	         &lt;/tr&gt;
+	      &lt;/tbody&gt;
+	   	&lt;/table&gt;
+	  &lt;/div&gt;
+		&lt;div class=&quot;columns six&quot;&gt;
+   		&lt;table class=&quot;table&quot;&gt;
+	      &lt;thead&gt;
+	         &lt;tr&gt;
+	            &lt;th&gt;Stroke Style Parameters&lt;/th&gt;
+	            &lt;th&gt;description&lt;/th&gt;
+	         &lt;/tr&gt;
+	      &lt;/thead&gt;
+	      &lt;tbody&gt;
+	         &lt;tr&gt;
+	            &lt;td&gt;stroke-width&lt;/td&gt;
+	            &lt;td&gt;width of the line&lt;/td&gt;
+	         &lt;/tr&gt;
+	         &lt;tr&gt;
+	            &lt;td&gt;stroke-opacity&lt;/td&gt;
+	            &lt;td&gt;number btwn 0 and 1 representing line opacity (see-through-ness); &lt;/td&gt;
+	         &lt;/tr&gt;
+	         &lt;tr&gt;
+	            &lt;td&gt;stroke&lt;/td&gt;
+	            &lt;td&gt;line color; can be a collor name like &quot;yellow&quot; or a color code like &quot;#ffffff&quot; or &quot;#fff&quot;&lt;/td&gt;
+	         &lt;/tr&gt;
+	          &lt;tr&gt;
+	            &lt;td&gt;stroke-dasharray&lt;/td&gt;
+	            &lt;td&gt;dash pattern of line; two or more comma separated integers &lt;/td&gt;
+	         &lt;/tr&gt;
+	      &lt;/tbody&gt;
+	    &lt;/table&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;columns five&quot;&gt;
+&lt;!-- SVG element viewport --&gt;
+
+      &lt;h1&gt; SVG drawing &lt;/h1&gt;
+      &lt;svg style=&quot;height: auto; width: 100%; border:1px solid blue;&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+        &lt;line id=&quot;line&quot; x1=&quot;10&quot; y1=&quot;50&quot; x2=&quot;180&quot; y2=&quot;50&quot; stroke=&quot;purple&quot; stroke-opacity=&quot;1&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;square&quot; stroke-dasharray=&quot;5,5,6&quot; /&gt;
+        &lt;text id=&quot;startCoordinates&quot; x=&quot;10&quot; y=&quot;30&quot;&gt;10, 50&lt;/text&gt;
+        &lt;text id=&quot;endCoordinates&quot; x=&quot;180&quot; y=&quot;50&quot;&gt;180, 50&lt;/text&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;columns seven&quot;&gt;
+
+&lt;!-- SVG code representation --&gt;
+
+			&lt;h1&gt; Code &lt;/h1&gt;
+			&lt;!-- HTML generated using hilite.me --&gt;
+			
+  &lt;pre style=&quot;margin: 0; line-height: 125%&quot;&gt;&lt;span style=&quot;color: #8B008B; font-weight: bold&quot;&gt;&amp;lt;svg&lt;/span&gt; &lt;span style=&quot;color: #658b00&quot;&gt;xmlns=&lt;/span&gt;&lt;span style=&quot;color: #CD5555&quot;&gt;&amp;quot;http://www.w3.org/2000/svg&amp;quot;&lt;/span&gt;
+    &lt;span style=&quot;color: #658b00&quot;&gt;xmlns:xlink=&lt;/span&gt;&lt;span style=&quot;color: #CD5555&quot;&gt;&amp;quot;http://www.w3.org/1999/xlink&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #8B008B; font-weight: bold&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span style=&quot;color: #8B008B; font-weight: bold&quot;&gt;&amp;lt;line&lt;/span&gt; 
+      &lt;span style=&quot;color: #658b00&quot;&gt;x1=&lt;/span&gt;&lt;span style=&quot;color: #CD5555&quot; id=&quot;startXCode&quot;&gt;&amp;quot;65&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #658b00&quot;&gt;y1=&lt;/span&gt;&lt;span style=&quot;color: #CD5555&quot; id=&quot;startYCode&quot;&gt;&amp;quot;100&amp;quot;&lt;/span&gt; 
+      &lt;span style=&quot;color: #658b00&quot;&gt;x2=&lt;/span&gt;&lt;span style=&quot;color: #CD5555&quot; id=&quot;endXCode&quot;&gt;&amp;quot;0&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #658b00&quot;&gt;y2=&lt;/span&gt;&lt;span style=&quot;color: #CD5555&quot; id=&quot;endYCode&quot;&gt;&amp;quot;100&amp;quot;&lt;/span&gt; 
+      &lt;span style=&quot;color: #658b00&quot;&gt;stroke-width=&lt;/span&gt;&lt;span style=&quot;color: #CD5555&quot; id=&quot;strokeWidthCode&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #658b00&quot;&gt;stroke=&lt;/span&gt;&lt;span style=&quot;color: #CD5555&quot; id=&quot;strokeColorCode&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt; 
+      &lt;span style=&quot;color: #658b00&quot;&gt;stroke-opacity=&lt;/span&gt;&lt;span style=&quot;color: #CD5555&quot; id=&quot;strokeOpacityCode&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #658b00&quot;&gt;stroke-dasharray=&lt;/span&gt;&lt;span style=&quot;color: #CD5555&quot; id=&quot;strokeDashCode&quot;&gt;&amp;quot;5,5&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #8B008B; font-weight: bold&quot;&gt;/&amp;gt;&lt;/span&gt;
+      
+&lt;span style=&quot;color: #8B008B; font-weight: bold&quot;&gt;&amp;lt;/svg&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+			
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Input fields that toggle svg parameters --&gt;
+&lt;!-- Input fields that toggle svg parameters --&gt;
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+  	&lt;div class=&quot;twelve columns&quot;&gt;
+    	&lt;h1&gt; Toggle &lt;/h1&gt;
+  	&lt;/div&gt;&lt;!--twelve columns--&gt;
+  &lt;/div&gt;&lt;!--row--&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;two columns&quot;&gt;
+      &lt;label for=&quot;startX&quot;&gt; x1 &lt;/label&gt;
+      &lt;input class=&quot;u-full-width&quot; type=&quot;number&quot; id=&quot;startX&quot; /&gt;
+      &lt;label for=&quot;endX&quot;&gt; x2 &lt;/label&gt;
+      &lt;input class=&quot;u-full-width&quot; type=&quot;number&quot; id=&quot;endX&quot; /&gt;
+    &lt;/div&gt;&lt;!--two columns--&gt;
+    &lt;div class=&quot;two columns&quot;&gt;
+      &lt;label for=&quot;startY&quot;&gt; y1 &lt;/label&gt;
+      &lt;input class=&quot;u-full-width&quot; type=&quot;number&quot; id=&quot;startY&quot; /&gt;
+      &lt;label for=&quot;endY&quot;&gt; y2 &lt;/label&gt;
+      &lt;input class=&quot;u-full-width&quot; type=&quot;number&quot; id=&quot;endY&quot; /&gt;
+    &lt;/div&gt;&lt;!--two columns--&gt;
+    &lt;div class=&quot;three columns&quot;&gt;
+      &lt;label for=&quot;strokeWidth&quot;&gt; stroke width &lt;/label&gt;
+      &lt;input class=&quot;u-full-width&quot; type=&quot;number&quot; id=&quot;strokeWidth&quot; min=&quot;0&quot; /&gt;
+      &lt;label for=&quot;strokeOpacity&quot;&gt; stroke opacity &lt;/label&gt;
+      &lt;input class=&quot;u-full-width&quot; type=&quot;number&quot; id=&quot;strokeOpacity&quot; min=&quot;0&quot; max=&quot;1&quot; step=&quot;.01&quot; /&gt;
+    &lt;/div&gt;&lt;!--two columns--&gt;
+    &lt;div class=&quot;three columns&quot;&gt;
+      &lt;label for=&quot;strokeColor&quot;&gt; stroke color &lt;/label&gt;
+      &lt;input class=&quot;u-full-width&quot; type=&quot;text&quot; id=&quot;strokeColor&quot; /&gt;
+      &lt;label for=&quot;strokeDash&quot;&gt; dash pattern &lt;/label&gt;
+      &lt;input class=&quot;u-full-width&quot; type=&quot;text&quot; id=&quot;strokeDash&quot; /&gt;
+    &lt;/div&gt;&lt;!--three columns--&gt;
+  &lt;/div&gt;&lt;!--row--&gt;
+&lt;/div&gt;
+&lt;!--container--&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+&lt;h1&gt;The Viewport, Viewbox, and Coordinate System&lt;/h1&gt;
+
+&lt;p&gt; Every SVG drawing is done inside of a viewport.  The dimension of the viewport can be determined by the width and height parameters in the opening svg tag.  In the previous line example, the viewport has a blue border around it so you can see the drawing area more clearly.    
+
+Inside this Viewport, spatial orientation is determined by a coordinate system.  The standard (Cartesian) coordinate system has its origin (0,0) in the bottom left corner, and x increases as you move to the right, and y increases as you move up.  The svg coordinate system is similar but with a reversed y-coordinate orientation.  In other words, the origin is in the top left (not bottom left), and y increases as you go down (not up).  You can see this as you change the y1 and y2 coordinates of the line in the previous example.
+
+Inside the Viewport, is also a Viewbox.  The Viewbox is essentially an area inside the Viewport that you are focusing on.  You can think of it like zooming in on any rectangular area of the larger Viewport.  The area of the Viewbox is also determined in the starting svg tag. &lt;/p&gt;
+
+
+&lt;div&gt;
+      &lt;h1&gt; Viewbox View &lt;/h1&gt;
+      &lt;svg height=&quot;300&quot; width=&quot;500&quot; style=&quot;border:1px solid blue;&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewbox=&quot;0 0 100 100&quot; id=&quot;svgViewBox&quot;&gt;
+        &lt;line id=&quot;line&quot; x1=&quot;10&quot; y1=&quot;50&quot; x2=&quot;180&quot; y2=&quot;50&quot; stroke=&quot;purple&quot; stroke-opacity=&quot;1&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;square&quot; stroke-dasharray=&quot;5,5&quot; /&gt;
+        &lt;circle cx=&quot;10&quot; cy=&quot;10&quot; r=&quot;2&quot; fill=&quot;blue&quot; id=&quot;dot1&quot; /&gt;
+        &lt;text x=&quot;10&quot; y=&quot;10&quot; id=&quot;dot1Text&quot;&gt;(10, 10)&lt;/text&gt;
+      &lt;/svg&gt;
+&lt;/div&gt;
+
+
+&lt;div&gt;
+      &lt;h1&gt; Viewport View with Viewbox &lt;/h1&gt;
+      &lt;svg height=&quot;300&quot; width=&quot;500&quot; style=&quot;border:1px solid blue;&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; id=&quot;svgViewPort&quot;&gt;
+      	&lt;rect x=&quot;0&quot; y=&quot;0&quot; stroke=&quot;blue&quot; fill-opacity=&quot;0&quot; height=&quot;30&quot; width=&quot;30&quot; id=&quot;rectViewBox&quot; /&gt;
+        &lt;line id=&quot;line&quot; x1=&quot;10&quot; y1=&quot;50&quot; x2=&quot;180&quot; y2=&quot;50&quot; stroke=&quot;purple&quot; stroke-opacity=&quot;1&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;square&quot; stroke-dasharray=&quot;5,5&quot; /&gt;
+        &lt;circle cx=&quot;10&quot; cy=&quot;10&quot; r=&quot;2&quot; fill=&quot;blue&quot; id=&quot;dot2&quot; /&gt;
+        &lt;text x=&quot;10&quot; y=&quot;10&quot; id=&quot;dot2Text&quot;&gt;(10, 10)&lt;/text&gt;
+      &lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h1&gt; Toggle &lt;/h1&gt;
+ 
+      &lt;label for=&quot;dot1XInput&quot;&gt; x1 &lt;/label&gt;
+      &lt;input id=&quot;dot1XInput&quot; class=&quot;u-full-width&quot; type=&quot;number&quot; min=&quot;0&quot; /&gt;
+
+      &lt;label for=&quot;dot1YInput&quot;&gt; x1 &lt;/label&gt;
+      &lt;input id=&quot;dot1YInput&quot; class=&quot;u-full-width&quot; type=&quot;number&quot; min=&quot;0&quot; /&gt;
+
+      &lt;label for=&quot;viewBoxXInput&quot;&gt; x1 &lt;/label&gt;
+      &lt;input id=&quot;viewBoxXInput&quot; class=&quot;u-full-width&quot; type=&quot;number&quot; min=&quot;0&quot; /&gt;
+
+      &lt;label for=&quot;viewBoxYInput&quot;&gt; x1 &lt;/label&gt;
+      &lt;input id=&quot;viewBoxYInput&quot; class=&quot;u-full-width&quot; type=&quot;number&quot; min=&quot;0&quot; /&gt;
+
+      &lt;label for=&quot;viewBoxWidthInput&quot;&gt; x1 &lt;/label&gt;
+      &lt;input id=&quot;viewBoxWidthInput&quot; class=&quot;u-full-width&quot; type=&quot;number&quot; min=&quot;0&quot; /&gt;
+
+      &lt;label for=&quot;viewBoxHeightInput&quot;&gt; x1 &lt;/label&gt;
+      &lt;input id=&quot;viewBoxHeightInput&quot; class=&quot;u-full-width&quot; type=&quot;number&quot; min=&quot;0&quot; /&gt;
+     
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;script&gt;
+// convenient setting functions
+
+var line = document.getElementById(&#39;line&#39;)
+var dot1 = document.getElementById(&#39;dot1&#39;)
+var dot2 = document.getElementById(&#39;dot2&#39;)
+var dot1Text = document.getElementById(&#39;dot1Text&#39;)
+var svgViewBox = document.getElementById(&#39;svgViewBox&#39;)
+var rectViewBox = document.getElementById(&#39;rectViewBox&#39;)
+
+function setStartX(x) {
+  line.x1.baseVal.val = x;
+  line.x1.baseVal.value = x;
+  document.getElementById(&#39;startXCode&#39;).innerHTML = &quot;&amp;quot;&quot; + x + &quot;&amp;quot;&quot;;
+}
+
+function setStartY(y) {
+  line.y1.baseVal.val = y;
+  line.y1.baseVal.value = y;
+  document.getElementById(&#39;startYCode&#39;).innerHTML = &quot;&amp;quot;&quot; + y + &quot;&amp;quot;&quot;;
+}
+
+function setEndX(x) {
+  line.x2.baseVal.val = x;
+  line.x2.baseVal.value = x;
+  document.getElementById(&#39;endXCode&#39;).innerHTML = &quot;&amp;quot;&quot; + x + &quot;&amp;quot;&quot;;
+}
+
+function setEndY(y) {
+  line.y2.baseVal.val = y;
+  line.y2.baseVal.value = y;
+  document.getElementById(&#39;endYCode&#39;).innerHTML = &quot;&amp;quot;&quot; + y + &quot;&amp;quot;&quot;;
+}
+
+function setStrokeWidth(width) {
+  line.attributes[&#39;stroke-width&#39;].value = width;
+  document.getElementById(&#39;strokeWidthCode&#39;).innerHTML = &quot;&amp;quot;&quot; + width + &quot;&amp;quot;&quot;;
+}
+
+function setStrokeColor(color) {
+  line.attributes[&#39;stroke&#39;].value = color;
+  document.getElementById(&#39;strokeColorCode&#39;).innerHTML = &quot;&amp;quot;&quot; + color + &quot;&amp;quot;&quot;;
+}
+
+function setStrokeOpacity(opacity) {
+  line.attributes[&#39;stroke-opacity&#39;].value = opacity;
+  document.getElementById(&#39;strokeOpacityCode&#39;).innerHTML = &quot;&amp;quot;&quot; + opacity + &quot;&amp;quot;&quot;;
+}
+
+function setStrokeDash(dash) {
+  line.attributes[&#39;stroke-dasharray&#39;].value = dash;
+  document.getElementById(&#39;strokeDashCode&#39;).innerHTML = &quot;&amp;quot;&quot; + dash + &quot;&amp;quot;&quot;;
+}
+
+function setdot1X(x) {
+  dot1.cx.baseVal.val = x;
+  dot1.cx.baseVal.value = x;
+  dot1Text.attributes.x.value = x;
+  dot2.attributes.cx.value = x;
+}
+
+function setdot1Y(y) {
+  dot1.cy.baseVal.val = y;
+  dot1.cy.baseVal.value = y;
+  dot1Text.attributes.y.value = y;
+  dot2.attributes.cy.value = y;
+}
+
+function setViewBoxX(x) {
+  svgViewBox.viewBox.baseVal.x = x;
+  rectViewBox.attributes.x.value = x;
+}
+
+function setViewBoxY(y) {
+  svgViewBox.viewBox.baseVal.y = y;
+  rectViewBox.attributes.y.value = y;
+}
+
+function setViewBoxWidth(width) {
+  svgViewBox.viewBox.baseVal.width = width;
+  rectViewBox.attributes.width.value = width;
+}
+
+function setViewBoxHeight(height) {
+  svgViewBox.viewBox.baseVal.height = height;
+  rectViewBox.attributes.height.value = height;
+}
+
+
+// Populate initial values
+(function() {
+  // initial values
+  var startX = &quot;15&quot;;
+  var startY = &quot;25&quot;;
+  var endX = &quot;145&quot;;
+  var endY = &quot;105&quot;;
+  var strokeWidth = &quot;1&quot;;
+  var strokeOpacity = &quot;1&quot;;
+  var strokeColor = &quot;black&quot;
+  var strokeDash = &quot;5,5&quot;;
+
+  //svg drawing
+
+
+  //code
+
+
+  //input fields
+    document.getElementById(&#39;startX&#39;).value = 50;
+    document.getElementById(&#39;startY&#39;).value = 25;
+    document.getElementById(&#39;endX&#39;).value = 100;
+    document.getElementById(&#39;endY&#39;).value = 125;
+})();
+
+
+// event handlers 
+document.getElementById(&#39;startX&#39;).addEventListener(&quot;input&quot;, function(e){
+  setStartX(e.target.value);
+  document.getElementById(&#39;startCoordinates&#39;).x.baseVal.val = e.target.value;
+  document.getElementById(&#39;startCoordinates&#39;).x.baseVal[0].value = e.target.value;
+  var pres = document.getElementById(&#39;startCoordinates&#39;).innerHTML.split(&#39;,&#39;)[1]; 
+  document.getElementById(&#39;startCoordinates&#39;).innerHTML = e.target.value + &#39;,&#39; + pres; 
+})
+
+document.getElementById(&#39;startY&#39;).addEventListener(&quot;input&quot;, function(e){
+  setStartY(e.target.value);
+  document.getElementById(&#39;startCoordinates&#39;).y.baseVal.val = e.target.value;
+  document.getElementById(&#39;startCoordinates&#39;).y.baseVal[0].value = e.target.value;
+  var pres = document.getElementById(&#39;startCoordinates&#39;).innerHTML.split(&#39;,&#39;)[0]; 
+  document.getElementById(&#39;startCoordinates&#39;).innerHTML = pres + &#39;,&#39; + e.target.value; 
+})
+
+
+document.getElementById(&#39;endX&#39;).addEventListener(&quot;input&quot;, function(e){
+  setEndX(e.target.value);
+  document.getElementById(&#39;endCoordinates&#39;).x.baseVal.val = e.target.value;
+  document.getElementById(&#39;endCoordinates&#39;).x.baseVal[0].value = e.target.value;
+  var pres = document.getElementById(&#39;endCoordinates&#39;).innerHTML.split(&#39;,&#39;)[1]; 
+  document.getElementById(&#39;endCoordinates&#39;).innerHTML = e.target.value + &#39;,&#39; + pres; 
+})
+
+document.getElementById(&#39;endY&#39;).addEventListener(&quot;input&quot;, function(e){
+  setEndY(e.target.value);
+  document.getElementById(&#39;endCoordinates&#39;).y.baseVal.val = e.target.value;
+  document.getElementById(&#39;endCoordinates&#39;).y.baseVal[0].value = e.target.value;
+  var pres = document.getElementById(&#39;endCoordinates&#39;).innerHTML.split(&#39;,&#39;)[1]; 
+  document.getElementById(&#39;endCoordinates&#39;).innerHTML = e.target.value + &#39;,&#39; + pres; 
+})
+
+document.getElementById(&#39;strokeWidth&#39;).addEventListener(&#39;input&#39;, function(e){
+  setStrokeWidth(e.target.value);
+
+})
+
+document.getElementById(&#39;strokeOpacity&#39;).addEventListener(&#39;input&#39;, function(e){
+  setStrokeOpacity(e.target.value);
+
+})
+
+document.getElementById(&#39;strokeColor&#39;).addEventListener(&#39;input&#39;, function(e){
+  setStrokeColor(e.target.value);
+})
+
+document.getElementById(&#39;strokeDash&#39;).addEventListener(&#39;input&#39;, function(e){
+  setStrokeDash(e.target.value);
+})
+
+document.getElementById(&#39;dot1XInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setdot1X(e.target.value);
+})
+
+document.getElementById(&#39;dot1YInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setdot1Y(e.target.value);
+})
+
+document.getElementById(&#39;viewBoxXInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setViewBoxX(e.target.value);
+})
+
+
+document.getElementById(&#39;viewBoxYInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setViewBoxY(e.target.value);
+})
+
+document.getElementById(&#39;viewBoxWidthInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setViewBoxWidth(e.target.value);
+})
+
+document.getElementById(&#39;viewBoxHeightInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setViewBoxHeight(e.target.value);
+})
+
+
+&lt;/script&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 21 Jul 2015 08:00:00 -0400</pubDate>
+        <link>/2015/07/21/introduction-to-svg/</link>
+        <guid isPermaLink="true">/2015/07/21/introduction-to-svg/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Basic SVG Shapes</title>
+        <description>&lt;h1&gt; Basic SVG Shapes &lt;/h1&gt;
+
+&lt;p&gt; The next basic svg shapes we&#39;ll go over int his article are: rectangles, circles (and ellipses), and polylines (polygons).  These shapes consist of 3 distinct parts: 1) spatial coordinates, 2) the border (or stroke), 3) the inside (or fill).  This is similar to the line in terms of having spatial coordinate and stroke parameters, but fill is new since these shapes have an &quot;inside.&quot;&lt;/p&gt;
+
+&lt;!-- Name of Shape --&gt;
+&lt;h1&gt; Rectangle &lt;/h1&gt;
+&lt;p&gt; table here &lt;/p&gt;
+
+&lt;!-- SVG element viewport --&gt;
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;five columns&quot;&gt;
+      &lt;h1&gt; SVG drawing &lt;/h1&gt;
+      &lt;svg style=&quot;height: auto; width: 100%; border:1px solid blue;&quot;&gt;
+        &lt;rect id=&quot;rect&quot; x=&quot;10&quot; y=&quot;10&quot; width=&quot;50&quot; height=&quot;50&quot; stroke=&quot;pink&quot; stroke-width=&quot;3&quot; stroke-opacity=&quot;1&quot; stroke-dasharray=&quot;2,2&quot; rx=&quot;5&quot; ry=&quot;5&quot; fill=&quot;blue&quot; fill-opacity=&quot;0.8&quot; /&gt;
+        &lt;!-- helpers --&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;seven columns&quot;&gt;
+    	&lt;h1&gt; Code &lt;/h1&gt;
+&lt;!-- HTML generated using hilite.me --&gt;&lt;div style=&quot;background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;&quot;&gt;&lt;pre style=&quot;margin: 0; line-height: 125%&quot;&gt;&lt;span style=&quot;color: #6ab825; font-weight: bold&quot;&gt;&amp;lt;svg&amp;gt;&lt;/span&gt;
+  &lt;span style=&quot;color: #6ab825; font-weight: bold&quot;&gt;&amp;lt;rect&lt;/span&gt; &lt;span style=&quot;color: #bbbbbb&quot;&gt;id=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;rect&amp;quot;&lt;/span&gt;
+        &lt;span style=&quot;color: #bbbbbb&quot;&gt;x=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;10&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #bbbbbb&quot;&gt;y=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;10&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #bbbbbb&quot;&gt;width=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;50&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #bbbbbb&quot;&gt;height=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;50&amp;quot;&lt;/span&gt; 
+        &lt;span style=&quot;color: #bbbbbb&quot;&gt;stroke=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;pink&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #bbbbbb&quot;&gt;stroke-width=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;3&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #bbbbbb&quot;&gt;stroke-opacity=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt; 
+        &lt;span style=&quot;color: #bbbbbb&quot;&gt;stroke-dasharray=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;2,2&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #bbbbbb&quot;&gt;rx=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;5&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #bbbbbb&quot;&gt;ry=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;5&amp;quot;&lt;/span&gt;
+        &lt;span style=&quot;color: #bbbbbb&quot;&gt;fill=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;blue&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #bbbbbb&quot;&gt;fill-opacity=&lt;/span&gt;&lt;span style=&quot;color: #ed9d13&quot;&gt;&amp;quot;0.8&amp;quot;&lt;/span&gt; &lt;span style=&quot;color: #6ab825; font-weight: bold&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #6ab825; font-weight: bold&quot;&gt;&amp;lt;/svg&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;!-- Input fields that toggle svg parameters --&gt;
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;h1&gt; Toggle &lt;/h1&gt;
+  &lt;/div&gt;&lt;!--row--&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;twelve columns&quot;&gt;
+
+      &lt;label for=&quot;xInput&quot;&gt; x &lt;/label&gt;
+      &lt;input class=&quot;u-full-width&quot; type=&quot;number&quot; id=&quot;xInput&quot; /&gt;
+
+      &lt;label for=&quot;yInput&quot;&gt; y &lt;/label&gt;
+      &lt;input class=&quot;u-full-width&quot; type=&quot;number&quot; id=&quot;yInput&quot; /&gt;
+
+      &lt;label for=&quot;width&quot;&gt;width&lt;/label&gt;
+      &lt;input id=&quot;widthInput&quot; type=&quot;number&quot; class=&quot;u-full-width&quot; /&gt;
+
+      &lt;label for=&quot;height&quot;&gt;height&lt;/label&gt;
+      &lt;input id=&quot;heightInput&quot; type=&quot;number&quot; class=&quot;u-full-width&quot; /&gt;
+
+      &lt;label for=&quot;&quot;&gt;&lt;/label&gt;
+      &lt;input id=&quot;strokeColorInput&quot; type=&quot;text&quot; class=&quot;u-full-width&quot; /&gt;
+
+      &lt;label for=&quot;&quot;&gt;&lt;/label&gt;
+      &lt;input id=&quot;strokeWidthInput&quot; type=&quot;number&quot; class=&quot;u-full-width&quot; /&gt;
+
+      &lt;label for=&quot;&quot;&gt;&lt;/label&gt;
+      &lt;input id=&quot;strokeOpacityInput&quot; type=&quot;number&quot; class=&quot;u-full-width&quot; /&gt;
+
+      &lt;label for=&quot;&quot;&gt;&lt;/label&gt;
+      &lt;input id=&quot;strokeDashInput&quot; type=&quot;text&quot; class=&quot;u-full-width&quot; /&gt;
+
+      &lt;label for=&quot;&quot;&gt;&lt;/label&gt;
+      &lt;input id=&quot;rxInput&quot; type=&quot;number&quot; class=&quot;u-full-width&quot; /&gt;
+
+      &lt;label for=&quot;&quot;&gt;&lt;/label&gt;
+      &lt;input id=&quot;ryInput&quot; type=&quot;number&quot; class=&quot;u-full-width&quot; /&gt;
+
+      &lt;label for=&quot;&quot;&gt;&lt;/label&gt;
+      &lt;input id=&quot;fillInput&quot; type=&quot;text&quot; class=&quot;u-full-width&quot; /&gt;
+
+      &lt;label for=&quot;&quot;&gt;&lt;/label&gt;
+      &lt;input id=&quot;fillOpacityInput&quot; type=&quot;number&quot; class=&quot;u-full-width&quot; /&gt;
+
+
+    &lt;/div&gt;&lt;!--twelve columns--&gt; 
+  &lt;/div&gt;&lt;!--row--&gt;
+&lt;/div&gt;
+
+&lt;h1&gt; Circle &lt;/h1&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1&gt; SVG drawing &lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;  &amp;lt;svg style=&quot;height: auto; width: 100%; border:1px solid blue;&quot;&amp;gt;
+    &amp;lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;20&quot; 
+    stroke=&quot;purple&quot; stroke-width=&quot;2&quot; stroke-opacity=&quot;1&quot; stroke-dasharray=&quot;3,3&quot;
+    fill=&quot;blue&quot; fill-opacity=&quot;1&quot;  /&amp;gt;
+    &amp;lt;!-- helpers --&amp;gt;
+  &amp;lt;/svg&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt; Ellipse &lt;/h1&gt;
+&lt;p&gt;Ellipses are similar to circles, except the radius in the x and y directions are separate values, allowing a shape to be wider than it is tall or vise versa.  A circle is an ellipse where there is one radius value for both directions.&lt;p&gt;
+&lt;h1&gt; SVG drawing &lt;/h1&gt;
+      &lt;svg style=&quot;height: auto; width: 100%; border:1px solid blue;&quot;&gt;
+        &lt;ellipse cx=&quot;20&quot; cy=&quot;20&quot; rx=&quot;20&quot; ry=&quot;40&quot; stroke=&quot;purple&quot; stroke-width=&quot;2&quot; stroke-opacity=&quot;1&quot; stroke-dasharray=&quot;3,3&quot; fill=&quot;blue&quot; fill-opacity=&quot;1&quot; /&gt;
+        &lt;!-- helpers --&gt;
+      &lt;/svg&gt;
+
+
+
+&lt;h1&gt; Polyline &lt;/h1&gt;
+&lt;p&gt;A polyline is a series of connecting lines that are drawn by between a series of points.  In other words, you specify a series of points, and lines are drawn from point to point in the order they are listed&lt;/p&gt;
+&lt;h1&gt; SVG drawing &lt;/h1&gt;
+      &lt;svg style=&quot;height: auto; width: 100%; border:1px solid blue;&quot;&gt;
+        &lt;polyline points=&quot;10,10  20,20  20,50&quot; stroke=&quot;purple&quot; stroke-width=&quot;2&quot; stroke-opacity=&quot;1&quot; stroke-dasharray=&quot;3,3&quot; fill=&quot;blue&quot; fill-opacity=&quot;1&quot; /&gt;
+        &lt;!-- helpers --&gt;
+      &lt;/svg&gt;
+
+
+&lt;h1&gt; Polygon &lt;/h1&gt;
+&lt;p&gt;A polygon is the same as a polyline, except that it automatically closes the shape for you.  In other words, a line is automatically added connecting the last point to the first point.  In contrast, with a polyline, you would have to add this closing line manually by having the first point and last point be equal&lt;/p&gt;
+&lt;h1&gt; SVG drawing &lt;/h1&gt;
+      &lt;svg style=&quot;height: auto; width: 100%; border:1px solid blue;&quot;&gt;
+        &lt;polygon points=&quot;10,10  20,20  20,50&quot; stroke=&quot;purple&quot; stroke-width=&quot;2&quot; stroke-opacity=&quot;1&quot; stroke-dasharray=&quot;3,3&quot; fill=&quot;blue&quot; fill-opacity=&quot;1&quot; /&gt;
+        &lt;!-- helpers --&gt;
+      &lt;/svg&gt;
+
+
+
+&lt;script&gt;
+
+var rect = document.getElementById(&#39;rect&#39;)
+
+// convenient setting functions
+function setX(x) {
+	rect.x.baseVal.val = x;
+  rect.x.baseVal.value = x;
+}
+
+function setY(y) {
+	rect.y.baseVal.val = y;
+  rect.y.baseVal.value = y;
+}
+
+function setWidth(width) {
+	rect.width.baseVal.val = width;
+  rect.width.baseVal.value = width;
+}
+
+function setHeight(height) {
+  rect.height.baseVal.val = height;
+  rect.height.baseVal.value = height;
+}
+
+function setStrokeColor(color) {
+  rect.height.baseVal.val = height;
+  rect.height.baseVal.value = height;
+}
+
+function setStrokeWidth(width) {
+  rect.attributes[&#39;stroke-width&#39;].value = width;
+  document.getElementById(&#39;strokeWidthCode&#39;).innerHTML = &quot;&amp;quot;&quot; + width + &quot;&amp;quot;&quot;;
+}
+
+function setStrokeColor(color) {
+  rect.attributes[&#39;stroke&#39;].value = color;
+  document.getElementById(&#39;strokeColorCode&#39;).innerHTML = &quot;&amp;quot;&quot; + color + &quot;&amp;quot;&quot;;
+}
+
+function setStrokeOpacity(opacity) {
+  rect.attributes[&#39;stroke-opacity&#39;].value = opacity;
+  document.getElementById(&#39;strokeOpacityCode&#39;).innerHTML = &quot;&amp;quot;&quot; + opacity + &quot;&amp;quot;&quot;;
+}
+
+function setStrokeDash(dash) {
+  rect.attributes[&#39;stroke-dasharray&#39;].value = dash;
+  document.getElementById(&#39;strokeDashCode&#39;).innerHTML = &quot;&amp;quot;&quot; + dash + &quot;&amp;quot;&quot;;
+}
+
+
+function setRx(rx) {
+  rect.rx.baseVal.val = rx;
+  rect.rx.baseVal.value = rx;
+}
+
+function setRy(rx) {
+  rect.ry.baseVal.val = ry;
+  rect.ry.baseVal.value = ry;
+}
+
+// event listeners
+document.getElementById(&#39;xInput&#39;).addEventListener(&#39;input&#39;, function(e){
+	setX(e.target.value);
+});
+
+document.getElementById(&#39;yInput&#39;).addEventListener(&#39;input&#39;, function(e){
+	setY(e.target.value);
+});
+
+document.getElementById(&#39;widthInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setWidth(e.target.value);
+});
+
+document.getElementById(&#39;heightInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setHeight(e.target.value);
+});
+
+
+document.getElementById(&#39;strokeColorInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setStrokeColor(e.target.value);
+});
+
+document.getElementById(&#39;strokeWidthInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setStrokeWidth(e.target.value);
+});
+
+document.getElementById(&#39;strokeOpacityInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setStrokeOpacity(e.target.value);
+});
+
+document.getElementById(&#39;strokeDashInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setStrokeDash(e.target.value);
+});
+
+document.getElementById(&#39;rxInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setRx(e.target.value);
+});
+
+document.getElementById(&#39;ryInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setRy(e.target.value);
+});
+
+document.getElementById(&#39;fillInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setFill(e.target.value);
+});
+
+document.getElementById(&#39;fillOpacityInput&#39;).addEventListener(&#39;input&#39;, function(e){
+  setfillOpacity(e.target.value);
+});
+
+
+&lt;/script&gt;
+&lt;/p&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 21 Jul 2015 08:00:00 -0400</pubDate>
+        <link>/2015/07/21/basic-svg-shapes/</link>
+        <guid isPermaLink="true">/2015/07/21/basic-svg-shapes/</guid>
+        
+        
+      </item>
+    
+      <item>
         <title>Triangle Numbers</title>
-        <description>&lt;p class=&quot;writing&quot;&gt; In this post, I&#39;ll talk about how I solved the &lt;a href=&quot;https://www.hackerrank.com/domains/&quot;&gt; HackerRank &lt;/a&gt; &lt;a href=&quot;https://www.hackerrank.com/challenges/triangle-numbers&quot;&gt; Triangle Numbers &lt;/a&gt; problem the long and why. In this problem, the triangle of numbers is created as follows: &lt;/p&gt;
+        <description>&lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1&quot;&gt;
+&lt;p class=&quot;writing&quot;&gt; In this post, I&#39;ll talk about how I solved the &lt;a href=&quot;https://www.hackerrank.com/domains/&quot;&gt; HackerRank &lt;/a&gt; &lt;a href=&quot;https://www.hackerrank.com/challenges/triangle-numbers&quot;&gt; Triangle Numbers &lt;/a&gt; problem the long and why. In this problem, the triangle of numbers is created as follows: &lt;/p&gt; 
 
 &lt;p align=&quot;center&quot;&gt; 1 &lt;/p&gt;
 &lt;p align=&quot;center&quot;&gt; 1 1 1 &lt;/p&gt;
 &lt;p align=&quot;center&quot;&gt; 1 2 3 2 1 &lt;/p&gt;
 &lt;p align=&quot;center&quot;&gt; 1 3 6 7 6 3 1 &lt;/p&gt;
+
 
 &lt;p&gt;Each number in any level is the sum of the number directly above it and its neighbors (not its own neighbors, the neighbors of the number directly above).  A non-existent neighbor is counted as a 0, i.e. the first two and last two numbers in any row will only be the sum of one or two numbers.  The problem asks you to give the position of the first even number a given level of the triangle.  No analytical idea popped at out at me immediately, so I decided with a brute force solution.  Maybe I would have some insight while breaking down the recursive formula for generating the levels&lt;/p&gt;
 
@@ -167,6 +895,10 @@ This simple function passed with flying colors.
 &lt;h2 class=&quot;section-heading&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p class=&quot;writing&quot;&gt; This was the long way to solve this problem for sure.  I made more functions than I needed to,  I used brute force as a starting point, I made graphs that revealed a pattern I probably could have picked up on through simple inspection, etc. but why?  Well in doing this problem I realized that I optimized for myself and I really didn&#39;t mind.  I had fun doing it this way, and I didn&#39;t go searching for some silver bullet algorithm I could apply, I didn&#39;t bother myself with being overly clever or performing intense mental gymnastics.  I just jumped in and kept everything simple at the expense of a little initial efficieny. This apporach isn&#39;t always appropriate, but I definitely don&#39;t mind when it is. &lt;/p&gt; 
 
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;style type=&quot;text/css&quot;&gt;
 p.writing {
     text-indent: 50px;
@@ -183,7 +915,10 @@ p.writing {
     
       <item>
         <title>Max Contiguous Subarrays and Kadane&#39;s Algorithm</title>
-        <description>&lt;p class=&quot;writing&quot;&gt; Recently, I&#39;ve been going through problems on HackerRank and I came across an algorithm that I  couldn&#39;t quite nail down, and it bugged me.  The problem I am referring to is the &lt;a href=&quot;https://www.hackerrank.com/challenges/maxsubarray&quot;&gt; Maximum Subarray Problem&lt;/a&gt; and the algorithm used to solve it is &lt;a href=&quot;http://en.wikipedia.org/wiki/Maximum_subarray_problem&quot;&gt;Kadane&#39;s Algorithm&lt;/a&gt;. HackerRank provides a &lt;a href=&quot;#hackerrank-kadane-video&quot;&gt;video&lt;/a&gt; which lays out the algorithm nicely in Python, but after staring at it for a while, I still didn&#39;t &lt;i&gt;get&lt;/i&gt; get exactly how the algorithm was working. Maybe I needed another perspective or to see someone go through the iterations the algorithm to understand the logic more clearly.  So I decided to hit up YouTube. &lt;/p&gt;
+        <description>&lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1&quot;&gt;
+&lt;p class=&quot;writing&quot;&gt; Recently, I&#39;ve been going through problems on HackerRank and I came across an algorithm that I  couldn&#39;t quite nail down, and it bugged me.  The problem I am referring to is the &lt;a href=&quot;https://www.hackerrank.com/challenges/maxsubarray&quot;&gt; Maximum Subarray Problem&lt;/a&gt; and the algorithm used to solve it is &lt;a href=&quot;http://en.wikipedia.org/wiki/Maximum_subarray_problem&quot;&gt;Kadane&#39;s Algorithm&lt;/a&gt;. HackerRank provides a &lt;a href=&quot;#hackerrank-kadane-video&quot;&gt;video&lt;/a&gt; which lays out the algorithm nicely in Python, but after staring at it for a while, I still didn&#39;t &lt;i&gt;get&lt;/i&gt; get exactly how the algorithm was working. Maybe I needed another perspective or to see someone go through the iterations the algorithm to understand the logic more clearly.  So I decided to hit up YouTube. &lt;/p&gt;
 
 &lt;h2 class=&quot;section-heading&quot;&gt;YouTubing It&lt;/h2&gt;
 
@@ -201,6 +936,7 @@ p.writing {
 &lt;h2 class=&quot;section-heading&quot;&gt;To the future&lt;/h2&gt;
 
 &lt;p class=&quot;writing&quot;&gt;I may not see or need to use Kadane&#39;s algorithm for a while after this and because of this, I will eventually forget it.  And if I ever need it, I would have to relearn probably almost from scratch.  But now I can tuck my new algorithmic teacher algorithm in a repository somewhere and bust it out for an almost instant understanding of Kadane&#39;s Algorithm should I ever want or need it.  Also, I hope that anyone else wanting to understand the algorithm quickly and easily could use this algorithm teacher algorithm.  Actually this worked so well for me I think I&#39;m going to make a little library of these, so hit me up if you have any requests. &lt;/p&gt;
+
 
 &lt;h2 class=&quot;section-heading&quot;&gt;Commandline Example&lt;/h2&gt;
 &lt;pre&gt;
@@ -316,11 +1052,19 @@ Finally, our max sum contiguous subarray from array [-6, 7, -2, 2, 4, -4, -13, 1
 &#39;All done&#39;
 &lt;/pre&gt;
 
+
+
+
+
 &lt;h3 class=&quot;section-heading&quot; id=&quot;hackerrank-kadane-video&quot;&gt;Maximum Contiguous Subarray Problem O(n) (Python)&lt;/h3&gt;
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/EK71U-vTOt4&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;br /&gt;
 &lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;style type=&quot;text/css&quot;&gt;
 a {text-decoration: underline;}
 p {
